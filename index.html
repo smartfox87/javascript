@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<div id="wrap">
+  <input type="text" id="input1">
+  <input type="text" id="input2">
+</div>
+<button id="button">button</button>
+<p id="output"></p>
+<script>
+    document.getElementById("wrap").onkeypress = function (event) {
+        if (/\D/.test(String.fromCharCode(event.charCode))) {
+            event.preventDefault();
+        }
+    };
+    document.getElementById("button").onclick = function () {
+        var str = "a=" + document.getElementById("input1").value + "&b=" + document.getElementById("input2").value;
+        console.log(str);
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "handler.ashx");
+        xhr.send(str);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById("output").innerHTML += xhr.responseText;
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+

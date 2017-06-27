@@ -21,7 +21,7 @@
         var str = "a=" + document.getElementById("input1").value + "&b=" + document.getElementById("input2").value;
         console.log(str);
         var xhr = new XMLHttpRequest();
-        xhr.open("post", "handler.ashx");
+        xhr.open("post", "https://smartfox87.github.io/javascript/handler.ashx");
         xhr.send(str);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
